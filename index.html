@@ -14,8 +14,8 @@
     font-family: 'Inter', sans-serif;
     font-size: 13px;
     font-weight: 400;
-    padding: 52px 52px 80px;
-    max-width: 1300px;
+    padding: 40px 32px 80px;
+    max-width: 1400px;
     margin: 0 auto;
   }
 
@@ -26,8 +26,8 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px;
-    margin-bottom: 40px;
-    padding-bottom: 24px;
+    margin-bottom: 36px;
+    padding-bottom: 20px;
     border-bottom: 2px solid #111;
   }
 
@@ -63,38 +63,39 @@
   /* ── KPI Strip ── */
   .kpi-strip {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     border: 1px solid #e0e0e0;
     border-radius: 4px;
     overflow: hidden;
-    margin-bottom: 44px;
+    margin-bottom: 36px;
   }
 
   .kpi {
-    padding: 18px 20px;
+    padding: 16px 18px;
     border-right: 1px solid #e0e0e0;
   }
 
   .kpi:last-child { border-right: none; }
 
   .kpi-label {
-    font-size: 0.64rem;
+    font-size: 0.62rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.09em;
     color: #999;
     font-weight: 500;
-    margin-bottom: 7px;
+    margin-bottom: 6px;
+    white-space: nowrap;
   }
 
   .kpi-val {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
     font-weight: 600;
     color: #111;
     line-height: 1;
     letter-spacing: -0.02em;
   }
 
-  .kpi-val.secondary { font-size: 1.3rem; font-weight: 500; color: #444; }
+  .kpi-val.secondary { font-size: 1.2rem; font-weight: 500; color: #444; }
 
   /* ── Section label ── */
   .section-label {
@@ -108,7 +109,7 @@
 
   /* ── Facility Block ── */
   .facility {
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
     overflow: hidden;
@@ -123,12 +124,12 @@
   .facility-header {
     background: #f7f7f7;
     border-bottom: 1px solid #e0e0e0;
-    padding: 16px 20px;
+    padding: 14px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 16px;
   }
 
   .facility-name {
@@ -136,17 +137,18 @@
     font-weight: 600;
     color: #111;
     letter-spacing: -0.01em;
+    flex-shrink: 0;
   }
 
   .facility-totals {
     display: flex;
-    gap: 28px;
+    gap: 24px;
     flex-wrap: wrap;
     align-items: center;
   }
 
   .fac-total {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     color: #888;
     display: flex;
     flex-direction: column;
@@ -162,22 +164,37 @@
   }
 
   /* ── Table ── */
-  table { width: 100%; border-collapse: collapse; }
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 
   thead th {
-    padding: 9px 20px;
+    padding: 8px 8px;
     text-align: left;
-    font-size: 0.62rem;
+    font-size: 0.58rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.07em;
     color: #999;
     font-weight: 500;
     background: #fff;
     border-bottom: 1px solid #e8e8e8;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
+    vertical-align: bottom;
+    line-height: 1.3;
   }
 
   thead th:not(:first-child) { text-align: right; }
+
+  /* Column widths — 10 columns totalling 100% */
+  th:nth-child(1)  { width: 12%; } /* Position */
+  th:nth-child(2)  { width: 10%; } /* Amount Spent */
+  th:nth-child(3)  { width: 10%; } /* Cost per App */
+  th:nth-child(4)  { width: 8%;  } /* Applicants */
+  th:nth-child(5)  { width: 8%;  } /* Qualified */
+  th:nth-child(6)  { width: 8%;  } /* Interviews */
+  th:nth-child(7)  { width: 7%;  } /* Hires */
+  th:nth-child(8)  { width: 9%;  } /* Impressions */
+  th:nth-child(9)  { width: 14%; } /* Qual. Rate */
+  th:nth-child(10) { width: 14%; } /* Cost per Qual */
 
   tbody tr {
     border-bottom: 1px solid #f0f0f0;
@@ -189,9 +206,11 @@
   tbody tr.inactive { opacity: 0.35; }
 
   td {
-    padding: 10px 20px;
+    padding: 9px 8px;
     color: #111;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   td:not(:first-child) { text-align: right; }
@@ -200,16 +219,16 @@
     display: inline-block;
     background: #f0f0f0;
     border-radius: 3px;
-    padding: 2px 8px;
-    font-size: 0.7rem;
+    padding: 2px 7px;
+    font-size: 0.68rem;
     font-weight: 500;
     color: #333;
   }
 
   .inactive-tag {
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     color: #bbb;
-    margin-left: 7px;
+    margin-left: 6px;
     text-transform: uppercase;
     letter-spacing: 0.07em;
   }
@@ -220,12 +239,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 8px;
+    gap: 6px;
     width: 100%;
   }
 
   .qual-track {
-    width: 50px;
+    width: 32px;
     height: 3px;
     background: #ebebeb;
     border-radius: 2px;
@@ -241,8 +260,8 @@
 
   /* ── Footer ── */
   footer {
-    margin-top: 48px;
-    padding-top: 18px;
+    margin-top: 40px;
+    padding-top: 16px;
     border-top: 1px solid #e0e0e0;
     font-size: 0.68rem;
     color: #bbb;
@@ -253,8 +272,10 @@
   }
 
   @media (max-width: 900px) {
-    body { padding: 24px 18px 60px; }
-    .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+    body { padding: 20px 14px 60px; }
+    .kpi-strip { grid-template-columns: repeat(3, 1fr); }
+    table { table-layout: auto; }
+    td, th { white-space: normal; }
   }
 </style>
 </head>
@@ -283,30 +304,28 @@
 
 <script>
 const raw = [
+  { facility:"On Tenth",        position:"CMA",        status:"active",   spend:5.20,   cpa:5.20,  leads:1,  qual:1,  qualRate:100,  cpqc:5.20,  interviews:1,    hires:null, impressions:276  },
+  { facility:"On Tenth",        position:"CNA",        status:"active",   spend:110.44, cpa:2.83,  leads:39, qual:38, qualRate:97,   cpqc:2.91,  interviews:10,   hires:1,    impressions:8905 },
+  { facility:"On Tenth",        position:"RNs & LPNs", status:"active",   spend:2.26,   cpa:null,  leads:0,  qual:0,  qualRate:null, cpqc:null,  interviews:null, hires:null, impressions:140  },
+
+  { facility:"On Woodlawn",     position:"CNA",        status:"active",   spend:96.79,  cpa:3.12,  leads:31, qual:31, qualRate:100,  cpqc:3.12,  interviews:1,    hires:null, impressions:6968 },
+  { facility:"On Woodlawn",     position:"RNs & LPNs", status:"active",   spend:22.31,  cpa:22.31, leads:1,  qual:1,  qualRate:100,  cpqc:22.31, interviews:null, hires:null, impressions:1307 },
+
   { facility:"Bonner Springs",  position:"CMA",        status:"active",   spend:34.60,  cpa:8.65,  leads:4,  qual:1,  qualRate:25,   cpqc:34.60, interviews:null, hires:null, impressions:1839 },
   { facility:"Bonner Springs",  position:"CNA",        status:"active",   spend:73.82,  cpa:3.52,  leads:21, qual:19, qualRate:90,   cpqc:3.89,  interviews:5,    hires:null, impressions:4914 },
   { facility:"Bonner Springs",  position:"RN",         status:"active",   spend:9.17,   cpa:null,  leads:0,  qual:0,  qualRate:null, cpqc:null,  interviews:null, hires:null, impressions:420  },
 
+  { facility:"Fountainview",    position:"CMA",        status:"active",   spend:47.10,  cpa:3.93,  leads:12, qual:10, qualRate:83,   cpqc:4.71,  interviews:null, hires:null, impressions:3467 },
+  { facility:"Fountainview",    position:"CNA",        status:"active",   spend:57.55,  cpa:3.39,  leads:17, qual:17, qualRate:100,  cpqc:3.39,  interviews:null, hires:null, impressions:4544 },
+  { facility:"Fountainview",    position:"RNs & LPNs", status:"active",   spend:0.54,   cpa:null,  leads:0,  qual:0,  qualRate:null, cpqc:null,  interviews:null, hires:null, impressions:30   },
+
   { facility:"Clearwater",      position:"CMA",        status:"inactive", spend:25.19,  cpa:6.30,  leads:4,  qual:4,  qualRate:100,  cpqc:6.30,  interviews:null, hires:null, impressions:1378 },
   { facility:"Clearwater",      position:"CNA",        status:"inactive", spend:74.25,  cpa:4.13,  leads:18, qual:11, qualRate:61,   cpqc:6.75,  interviews:null, hires:null, impressions:5257 },
   { facility:"Clearwater",      position:"RNs & LPNs", status:"active",   spend:14.17,  cpa:null,  leads:0,  qual:0,  qualRate:null, cpqc:null,  interviews:null, hires:null, impressions:895  },
-  { facility:"Clearwater",      position:"RN",         status:"inactive", spend:0.00,   cpa:null,  leads:0,  qual:0,  qualRate:null, cpqc:null,  interviews:null, hires:null, impressions:1    },
-
-  { facility:"Fountainview",    position:"CMA",        status:"active",   spend:47.10,  cpa:3.93,  leads:12, qual:10, qualRate:83,   cpqc:4.71,  interviews:null, hires:null, impressions:3467 },
-  { facility:"Fountainview",    position:"CNA",        status:"active",   spend:57.55,  cpa:3.39,  leads:17, qual:17, qualRate:100,  cpqc:3.39,  interviews:null, hires:null, impressions:4544 },
-  { facility:"Fountainview",    position:"LPN",        status:"inactive", spend:2.83,   cpa:null,  leads:0,  qual:0,  qualRate:null, cpqc:null,  interviews:null, hires:null, impressions:154  },
-  { facility:"Fountainview",    position:"RNs & LPNs", status:"active",   spend:0.54,   cpa:null,  leads:0,  qual:0,  qualRate:null, cpqc:null,  interviews:null, hires:null, impressions:30   },
-  { facility:"Fountainview",    position:"RN",         status:"inactive", spend:0.10,   cpa:null,  leads:0,  qual:0,  qualRate:null, cpqc:null,  interviews:null, hires:null, impressions:13   },
-
-  { facility:"On Tenth",        position:"CMA",        status:"active",   spend:5.20,   cpa:5.20,  leads:1,  qual:1,  qualRate:100,  cpqc:5.20,  interviews:1,    hires:null, impressions:276  },
-  { facility:"On Tenth",        position:"CNA",        status:"active",   spend:110.44, cpa:2.83,  leads:39, qual:38, qualRate:97,   cpqc:2.91,  interviews:10,   hires:1,    impressions:8905 },
-  { facility:"On Tenth",        position:"RNs & LPNs", status:"inactive", spend:2.26,   cpa:null,  leads:0,  qual:0,  qualRate:null, cpqc:null,  interviews:null, hires:null, impressions:140  },
-
-  { facility:"On Woodlawn",     position:"CNA",        status:"active",   spend:96.79,  cpa:3.12,  leads:31, qual:31, qualRate:100,  cpqc:3.12,  interviews:1,    hires:null, impressions:6968 },
-  { facility:"On Woodlawn",     position:"RNs & LPNs", status:"active",   spend:22.31,  cpa:22.31, leads:1,  qual:1,  qualRate:100,  cpqc:22.31, interviews:null, hires:null, impressions:1307 },
 ];
 
-const facilities = [...new Set(raw.map(r => r.facility))];
+const facilityOrder = ["On Tenth","On Woodlawn","Bonner Springs","Fountainview","Clearwater"];
+const facilities = facilityOrder.filter(f => raw.some(r => r.facility === f));
 
 const totSpend      = raw.reduce((s,r) => s+r.spend, 0);
 const totLeads      = raw.reduce((s,r) => s+r.leads, 0);
@@ -321,6 +340,8 @@ document.getElementById('kpiStrip').innerHTML = [
   { label:"Total Amount Spent",     val:`$${totSpend.toFixed(2)}` },
   { label:"Total Applicants",       val:totLeads },
   { label:"Avg Cost per Applicant", val:`$${avgCPA.toFixed(2)}` },
+  { label:"Total Interviews",       val:totInterviews },
+  { label:"Total Hires",            val:totHires },
   { label:"Impressions",            val:totImpr.toLocaleString(), cls:'secondary' },
 ].map(k=>`
   <div class="kpi">
